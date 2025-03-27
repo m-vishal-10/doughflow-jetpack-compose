@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                             NavigationBarItem(
-                                selected = backStackEntry?.destination?.route == "settings",
+                                selected = backStackEntry?.destination?.route?.startsWith("settings") ?: false,
                                 onClick = {navController.navigate("settings")  },
                                 label = {
                                     Text("Settings")

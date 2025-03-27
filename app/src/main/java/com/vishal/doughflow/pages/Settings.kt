@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -16,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.vishal.doughflow.components.TableRow
 import com.vishal.doughflow.ui.theme.BackgroundElevated
+import com.vishal.doughflow.ui.theme.DividerColor
 import com.vishal.doughflow.ui.theme.Shapes
 import com.vishal.doughflow.ui.theme.TopAppBarBackground
 
@@ -34,12 +36,17 @@ fun Settings(navController: NavController){
                 Column (
                     modifier = Modifier
                         .padding(16.dp)
-                        .clip(shape = Shapes.medium)
+                        .clip(shape = Shapes.large)
                         .fillMaxWidth()
                         .background(BackgroundElevated)
                 ){
-                    TableRow("Categories", hasArrow = true)
-                    TableRow("Erase all data", isDestructive = true)
+                    TableRow("Categories", hasArrow = true, onClick ={_ ->
+
+                            navController.navigate("settings/categories")
+
+                    } )
+                    HorizontalDivider(modifier = Modifier.padding(start = 16.dp), thickness = 1.dp, color = DividerColor)
+                    TableRow("Erase all data", isDestructive = true, onClick = {})
                 }
             }
 
