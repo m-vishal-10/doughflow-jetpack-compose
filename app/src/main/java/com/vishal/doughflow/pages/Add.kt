@@ -5,8 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -74,15 +74,15 @@ fun Add(navController: NavController) {
                         )
 
                     }
-                    Divider(modifier = Modifier
+                    HorizontalDivider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor
                     )
                     TableRow("Recurrence")
-                    Divider(modifier = Modifier
+                    HorizontalDivider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor
                     )
                     TableRow("Date")
-                    Divider(modifier = Modifier
+                    HorizontalDivider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor
                     )
                     TableRow("Note") {
@@ -103,7 +103,7 @@ fun Add(navController: NavController) {
                             }
                         )
                     }
-                    Divider(modifier = Modifier
+                    HorizontalDivider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor
                     )
                     TableRow("Category")
