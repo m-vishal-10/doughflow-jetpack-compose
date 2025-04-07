@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import com.vishal.doughflow.ui.theme.DoughFlowTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -24,6 +25,7 @@ fun DatePickerModal(
             }
         }
     )
+
 
     DatePickerDialog(
         onDismissRequest = onDismiss,
@@ -43,6 +45,8 @@ fun DatePickerModal(
             }
         }
     ) {
-        DatePicker(state = datePickerState)
+        DoughFlowTheme {
+            DatePicker(state = datePickerState)
+        }
     }
 }
