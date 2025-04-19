@@ -10,9 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.text.input.InputTransformation.Companion.keyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -27,7 +25,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -106,7 +103,7 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                     .background(BackgroundElevated)
                     .fillMaxWidth()
                 ) {
-                    TableRow("Amount") {
+                    TableRow(label = "Amount", detailContent = {
                         UnstyledTextField(
                             value = state.amount ,
                             onValueChange = vm::setAmount,
@@ -124,16 +121,15 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                                     text = "Amount",
                                     color = Color.Gray,
                                     textAlign = TextAlign.Right,
-                                    modifier = Modifier.fillMaxWidth()
+                                    modifier = Modifier.fillMaxWidth().padding(end = 16.dp)
                                 )
                             }
                         )
-
-                    }
+                    })
                     HorizontalDivider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor
                     )
-                    TableRow("Recurrence") {
+                    TableRow(label = "Recurrence", detailContent = {
                         var recurrenceMenuOpened by remember {
                             mutableStateOf(false)
                         }
@@ -169,17 +165,17 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                         }
 
 
-                    }
+                    })
                     HorizontalDivider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor
                     )
                     var isDatePickerVisible by remember { mutableStateOf(false) }
-                    TableRow("Date") {
+                    TableRow(label = "Date", detailContent = {
                         TextButton(
                             onClick = { isDatePickerVisible = true },
                             contentPadding = PaddingValues(0.dp)
                         ) {
-                            Text(text = formattedDate, color = Color.White)
+                            Text(text = formattedDate, color = Color.White, modifier = Modifier.padding(end = 16.dp))
 
                         }
                         if (isDatePickerVisible) {
@@ -199,11 +195,11 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                             )
                         }
 
-                    }
+                    })
                     HorizontalDivider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor
                     )
-                    TableRow("Note") {
+                    TableRow(label = "Note", detailContent = {
                         UnstyledTextField(
                             value = state.note?: "",
                             onValueChange = {vm.setNote(it)},
@@ -216,15 +212,15 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                                     text = "Note",
                                     color = Color.Gray,
                                     textAlign = TextAlign.Right,
-                                    modifier = Modifier.fillMaxWidth()
+                                    modifier = Modifier.fillMaxWidth().padding(end = 16.dp)
                                 )
                             }
                         )
-                    }
+                    })
                     HorizontalDivider(modifier = Modifier
                         .padding(start = 16.dp), thickness = 1.dp, color = DividerColor
                     )
-                    TableRow("Category"){
+                    TableRow(label = "Category", detailContent = {
                         var categoriesMenuOpened by remember {
                             mutableStateOf(false)
                         }
@@ -274,7 +270,7 @@ fun Add(navController: NavController, vm: AddViewModel = viewModel()) {
                             }
                         }
 
-                    }
+                    })
                 }
                 Button(onClick = {},
                     shape = Shapes.large

@@ -41,11 +41,11 @@ fun Settings(navController: NavController){
                         .fillMaxWidth()
                         .background(BackgroundElevated)
                 ){
-                    TableRow("Categories", hasArrow = true, modifier = Modifier.clickable {
+                    TableRow(label = "Categories", hasArrow = true, modifier = Modifier.clickable {
                         navController.navigate("settings/categories")
                     })
                     HorizontalDivider(modifier = Modifier.padding(start = 16.dp), thickness = 1.dp, color = DividerColor)
-                    TableRow("Erase all data", isDestructive = true)
+                    TableRow(label = "Erase all data", isDestructive = true)
                 }
             }
 

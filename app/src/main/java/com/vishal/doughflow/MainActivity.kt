@@ -20,6 +20,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.vishal.doughflow.pages.Add
+import com.vishal.doughflow.pages.Categories
 import com.vishal.doughflow.pages.Expenses
 import com.vishal.doughflow.pages.Settings
 import com.vishal.doughflow.ui.theme.DoughFlowTheme
@@ -37,7 +38,15 @@ class MainActivity : ComponentActivity() {
                         NavigationBar {
                             NavigationBarItem(
                                 selected = backStackEntry?.destination?.route == "expenses",
-                                onClick = {navController.navigate("expenses") },
+                                onClick = {navController.navigate("expenses"){
+                                    run {
+                                        launchSingleTop = true
+                                        popUpTo(navController.graph.startDestinationId) {
+                                            saveState = true
+                                        }
+                                        restoreState = true
+                                    }
+                                } },
                                 label = {
                                     Text("Expenses")
                                 },
@@ -50,7 +59,15 @@ class MainActivity : ComponentActivity() {
                             )
                             NavigationBarItem(
                                 selected = backStackEntry?.destination?.route == "reports",
-                                onClick = { navController.navigate("reports") },
+                                onClick = { navController.navigate("reports"){
+                                    run {
+                                        launchSingleTop = true
+                                        popUpTo(navController.graph.startDestinationId) {
+                                            saveState = true
+                                        }
+                                        restoreState = true
+                                    }
+                                } },
                                 label = {
                                     Text("Reports")
                                 },
@@ -63,7 +80,15 @@ class MainActivity : ComponentActivity() {
                             )
                             NavigationBarItem(
                                 selected = backStackEntry?.destination?.route == "add",
-                                onClick = { navController.navigate("add") },
+                                onClick = { navController.navigate("add"){
+                                    run {
+                                        launchSingleTop = true
+                                        popUpTo(navController.graph.startDestinationId) {
+                                            saveState = true
+                                        }
+                                        restoreState = true
+                                    }
+                                } },
                                 label = {
                                     Text("Add")
                                 },
@@ -76,7 +101,15 @@ class MainActivity : ComponentActivity() {
                             )
                             NavigationBarItem(
                                 selected = backStackEntry?.destination?.route?.startsWith("settings") ?: false,
-                                onClick = {navController.navigate("settings")  },
+                                onClick = {navController.navigate("settings"){
+                                    run {
+                                        launchSingleTop = true
+                                        popUpTo(navController.graph.startDestinationId) {
+                                            saveState = true
+                                        }
+                                        restoreState = true
+                                    }
+                                }  },
                                 label = {
                                     Text("Settings")
                                 },
@@ -124,7 +157,7 @@ class MainActivity : ComponentActivity() {
                                 Surface(modifier = Modifier
                                     .fillMaxSize()
                                     .padding(innerPadding)) {
-                                    Expenses(navController)
+                                    Categories(navController)
                                 }
                             }
                         }
