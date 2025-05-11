@@ -69,4 +69,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation("com.github.skydoves:colorpicker-compose:1.1.2")
+    implementation ("me.saket.swipe:swipe:1.3.0")
 }
